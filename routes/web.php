@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
+use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\FarmController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,6 +10,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [Controller::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [Controller::class, 'show'])->name('dashboard')->middleware('auth');
+Route::get('/farms', [FarmController::class, 'index'])->name('farms')->middleware('web');
+Route::get('/animals', [AnimalController::class, 'index'])->name('animals')->middleware('web');
 
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -7,13 +7,13 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\View;
+use Illuminate\View\View;
 
 class FarmController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-
+        return view('farms');
     }
 
     public function create(Request $request): RedirectResponse
@@ -24,7 +24,6 @@ class FarmController extends Controller
             'email' => $request['email'],
             'website' => $request['website'],
         ]);
-
 
         return Redirect::to('accounts');
     }
