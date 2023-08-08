@@ -12,7 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function farm(): HasMany
+    public function farms(): HasMany
     {
         return $this->hasMany(Farm::class);
     }
