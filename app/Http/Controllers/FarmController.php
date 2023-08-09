@@ -13,6 +13,10 @@ class FarmController extends Controller
 {
     public function create(): View
     {
+        if(!Auth::User()) {
+            return view('auth.login');
+        }
+
         return view('farms');
     }
 

@@ -13,6 +13,7 @@ Route::get('/dashboard', [Controller::class, 'index'])->name('dashboard')->middl
 Route::get('/dashboard', [Controller::class, 'show'])->name('dashboard')->middleware('auth');
 Route::get('/farms', [FarmController::class, 'create'])->name('farms')->middleware('web');
 Route::post('/farms', [FarmController::class, 'store'])->name('farms')->middleware('web');
-Route::get('/animals', [AnimalController::class, 'index'])->name('animals')->middleware('web');
+Route::get('/animals', [AnimalController::class, 'create'])->name('animals')->middleware('web');
+Route::post('/animals', [AnimalController::class, 'store'])->name('animals')->middleware('web');
 
 require __DIR__ . '/auth.php';

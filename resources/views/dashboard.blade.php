@@ -69,19 +69,25 @@
                                     </span>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                            <div x-data="{showModal:false}">
-                            <button
-                                class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none"
-                                @click="showModal = true">
-                                Apskatīt dzīvniekus
-                            </button>
-                                <div x-show="showModal" class="fixed inset-0 flex items-center justify-center z-50">
-                                    <div class="bg-white p-6 rounded shadow-lg">
-                                        <h2 class="text-lg font-semibold mb-2">Dzīvnieki šajā fermā</h2>
-                                        <p>This is the content of the popup.</p>
-                                        <button @click="showModal = false" class="mt-4 bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">Aizvērt</button>
+                            <div x-data="{ showModal: false, selectedFarm: null }">
+                                    <button
+                                            class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none"
+                                            @click="selectedFarm = {{ $farm->id }}; showModal = true">
+                                        Apskatīt dzīvniekus
+                                    </button>
+                                    <div x-show="showModal && selectedFarm === {{ $farm->id }}" class="fixed inset-0 flex items-center justify-center z-50">
+                                        <div class="bg-white p-6 rounded shadow-lg">
+                                            <h2 class="text-lg font-semibold mb-2">Dzīvnieki šajā fermā</h2>
+                                            <ul>
+                                                @foreach ($farm->animals as $animal)
+                                                    <li>{{ $animal->animal_number }}</li>
+                                                    <li>{{ $animal->type_name }}</li>
+                                                    <li>{{ $animal->years }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <button @click="showModal = false" class="mt-4 bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">Aizvērt</button>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                         </td>
                     </tr>
