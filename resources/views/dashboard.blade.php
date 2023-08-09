@@ -64,8 +64,7 @@
                         <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
                                         <span
                                             class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden
-                                              class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                        <span class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
                                         <span class="relative text-xs">{{$farm->created_at}}</span>
                                     </span>
                         </td>
@@ -105,8 +104,7 @@
                         <nav class="relative z-0 inline-flex shadow-sm">
                             <div>
                                 <a href="#"
-                                   class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
-                                   aria-label="Previous" v-on:click.prevent="changePage(pagination.current_page - 1)">
+                                   class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150">
                                     <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd"
                                               d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
@@ -128,7 +126,7 @@
                                     3
                                 </a>
                             </div>
-                            <div v-if="pagination.current_page < pagination.last_page">
+                            <div>
                                 <a href="#"
                                    class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
                                    aria-label="Next">
