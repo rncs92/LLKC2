@@ -11,7 +11,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [Controller::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/dashboard', [Controller::class, 'show'])->name('dashboard')->middleware('auth');
-Route::get('/farms', [FarmController::class, 'index'])->name('farms')->middleware('web');
+Route::get('/farms', [FarmController::class, 'create'])->name('farms')->middleware('web');
+Route::post('/farms', [FarmController::class, 'store'])->name('farms')->middleware('web');
 Route::get('/animals', [AnimalController::class, 'index'])->name('animals')->middleware('web');
 
 require __DIR__ . '/auth.php';

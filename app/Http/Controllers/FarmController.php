@@ -11,20 +11,22 @@ use Illuminate\View\View;
 
 class FarmController extends Controller
 {
-    public function index(): View
+    public function create(): View
     {
         return view('farms');
     }
 
-    public function create(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        new Farm([
-            'user_id' => Auth::user()->getAuthIdentifier(),
+        $user = Auth::user();
+        $farm = new Farm([
             'name' => $request['name'],
             'email' => $request['email'],
             'website' => $request['website'],
         ]);
 
-        return Redirect::to('accounts');
+        $user->farms()->save($farm);
+
+        return Redirect::to('/dashboard');
     }
 }
