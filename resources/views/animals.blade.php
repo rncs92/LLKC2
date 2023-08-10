@@ -15,9 +15,10 @@
                                     Izvēlies fermu
                                     <span class="text-red-500">*</span>
                                 </label>
-                                <select id="farm" name="farm" class="w-3/4 px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">
+                                <select id="farm" name="farm"
+                                        class="w-3/4 px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">
                                     @foreach($farms as $farm)
-                                    <option value="{{$farm->id}}">{{$farm->name}}</option>
+                                        <option value="{{$farm->id}}">{{$farm->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -75,6 +76,9 @@
                                         type="submit">
                                     Pievienot dzīvnieku
                                 </button>
+                                @error('farm')
+                                <span class="flex justify-center mt-2 text-red-500 text-base italic">{{ $message }}</span>
+                                @enderror
                             </div>
                             <hr class="mb-6 border-t"/>
                             <div class="text-center">
