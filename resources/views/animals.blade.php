@@ -16,7 +16,6 @@
                                     <span class="text-red-500">*</span>
                                 </label>
                                 <select id="farm" name="farm" class="w-3/4 px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">
-                                    <option selected>Izvēlieties fermu</option>
                                     @foreach($farms as $farm)
                                     <option value="{{$farm->id}}">{{$farm->name}}</option>
                                     @endforeach

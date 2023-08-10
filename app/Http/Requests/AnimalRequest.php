@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Http\Requests;
 
@@ -13,8 +13,7 @@ class AnimalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'farm' => 'required',
-            'number' => 'required|size:8|numeric',
+            'number' => 'required|digits:8|numeric|unique:animals,animal_number',
             'type' => 'required|min:2|max:255|string'
         ];
     }
