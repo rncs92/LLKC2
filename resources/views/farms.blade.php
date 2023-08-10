@@ -22,6 +22,9 @@
                                     type="text"
                                     placeholder="Ievadiet nosaukumu"
                                 />
+                                @error('name')
+                                <span class="flex text-red-500 text-xs italic">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
@@ -35,6 +38,9 @@
                                     type="email"
                                     placeholder="Ievadiet epastu"
                                 />
+                                @error('email')
+                                <span class="flex text-red-500 text-xs italic">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="website">
@@ -48,6 +54,9 @@
                                     type="text"
                                     placeholder="Ievadiet mājaslapu"
                                 />
+                                @error('website')
+                                <span class="flex text-red-500 text-xs italic">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-6 text-center">
                                 <button

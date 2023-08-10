@@ -1,4 +1,9 @@
 <x-app-layout>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="py-8">
         <div class="max-w-7xl text-4xl mx-auto sm:px-6 lg:px-8 flex justify-center items-center h-full">
             Sveiki, {{ Auth::user()->name }}!
@@ -78,22 +83,22 @@
                                 <div x-show="showModal && selectedFarm === {{ $farm->id }}"
                                      class="fixed inset-0 flex items-center justify-center z-50">
                                     <div class="bg-white p-6 rounded shadow-lg">
-                                        <h2 class="flex justify-center font-semibold mb-2">Dzīvnieki šajā fermā</h2>
+                                        <h2 class="flex justify-center text-lg font-semibold mb-2">Dzīvnieki šajā fermā</h2>
                                         <div class="relative overflow-x-auto">
                                             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                <thead class="text-xs text-gray-700 uppercase bg-green-50 dark:bg-gray-700 dark:text-gray-400">
                                                 <tr>
                                                     <th scope="col" class="px-6 py-3">
-                                                        Product name
+                                                        Fermas ID
                                                     </th>
                                                     <th scope="col" class="px-6 py-3">
-                                                        Color
+                                                        Dzīvnieka numurs
                                                     </th>
                                                     <th scope="col" class="px-6 py-3">
-                                                        Category
+                                                        Dzīvnieka tips
                                                     </th>
                                                     <th scope="col" class="px-6 py-3">
-                                                        Price
+                                                        Vecums
                                                     </th>
                                                 </tr>
                                                 </thead>
@@ -102,7 +107,7 @@
                                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                         <th scope="row"
                                                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                            {{$animal->id}}
+                                                            {{$animal->farm_id}}
                                                         </th>
                                                         <td class="px-6 py-4">
                                                             {{ $animal->animal_number }}
@@ -119,7 +124,7 @@
                                             </table>
                                         </div>
                                         <button @click="showModal = false"
-                                                class="mt-4 bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">Aizvērt
+                                                class="mt-4 bg-blue-400 hover:bg-blue-600 px-3 py-1 rounded">Aizvērt
                                         </button>
                                     </div>
                                 </div>

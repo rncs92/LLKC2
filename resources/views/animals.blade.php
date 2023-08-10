@@ -34,6 +34,9 @@
                                         type="text"
                                         placeholder="Ievadiet numuru"
                                 />
+                                @error('number')
+                                <span class="flex text-red-500 text-xs italic">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="type">
@@ -47,6 +50,9 @@
                                         type="text"
                                         placeholder="Ievadiet tipu"
                                 />
+                                @error('type')
+                                <span class="flex text-red-500 text-xs italic">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="years">
@@ -60,6 +66,9 @@
                                         type="text"
                                         placeholder="Ievadiet vecumu"
                                 />
+                                @error('years')
+                                <span class="flex text-red-500 text-xs italic">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-6 text-center">
                                 <button

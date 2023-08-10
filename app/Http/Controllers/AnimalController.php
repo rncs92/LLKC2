@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AnimalRequest;
 use App\Models\Animal;
 use App\Models\Farm;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class AnimalController extends Controller
 {
     public function create(): View
     {
-        if(!Auth::User()) {
-           return view('auth.login');
+        if (!Auth::User()) {
+            return view('auth.login');
         }
 
         $userId = Auth::user()->getAuthIdentifier();
@@ -24,18 +24,20 @@ class AnimalController extends Controller
         return view('animals', compact('farms'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(AnimalRequest $request): RedirectResponse
     {
+        $validatedData = $request->validated();
+
         $farmId = $request['farm'];
         $farm = Farm::findOrFail($farmId);
         $animal = new Animal([
-            'animal_number' => $request['number'],
-            'type_name' => $request['type'],
-            'years' => $request['years'],
+            'animal_number' => $validatedData['number'],
+            'type_name' => $validatedData['type'],
+            'years' => $validatedData['years'],
         ]);
 
         $farm->animals()->save($animal);
 
-        return Redirect::to('/dashboard');
+        return redirect('/dashboard')->with('success', 'Ferma veiksmīgi pievienota!');
     }
 }

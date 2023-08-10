@@ -2,35 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FarmRequest;
 use App\Models\Farm;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class FarmController extends Controller
 {
     public function create(): View
     {
-        if(!Auth::User()) {
+        if (!Auth::User()) {
             return view('auth.login');
         }
 
         return view('farms');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(FarmRequest $request): RedirectResponse
     {
+        $validatedData = $request->validated();
+
         $user = Auth::user();
         $farm = new Farm([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'website' => $request['website'],
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'website' => $validatedData['website'],
         ]);
 
         $user->farms()->save($farm);
 
-        return Redirect::to('/dashboard');
+        return redirect('/dashboard');
     }
 }
