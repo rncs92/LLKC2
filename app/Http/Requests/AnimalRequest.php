@@ -14,7 +14,8 @@ class AnimalRequest extends FormRequest
     {
         return [
             'number' => 'required|digits:8|numeric|unique:animals,animal_number',
-            'type' => 'required|min:2|max:255|string'
+            'type' => 'required|min:2|max:255|string',
+            'years' => 'nullable|numeric'
         ];
     }
 }

@@ -16,7 +16,7 @@ class FarmRequest extends FormRequest
         return [
             'name' => 'required|string|min:2|max:255',
             'email' => 'required|email|min:3|max:255|unique:farms,email',
-            'website' => 'active_url|max:255',
+            'website' => 'nullable|max:255',
         ];
     }
 }

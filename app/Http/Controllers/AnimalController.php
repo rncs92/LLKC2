@@ -38,6 +38,6 @@ class AnimalController extends Controller
 
         $farm->animals()->save($animal);
 
-        return redirect('/dashboard')->with('success', 'Ferma veiksmīgi pievienota!');
+        return redirect('/dashboard')->with('success', 'Dzīvnieks veiksmīgi pievienots!');
     }
 }

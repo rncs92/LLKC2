@@ -32,6 +32,6 @@ class FarmController extends Controller
 
         $user->farms()->save($farm);
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', 'Ferma veiksmīgi pievienota!');
     }
 }

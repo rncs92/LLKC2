@@ -1,9 +1,4 @@
 <x-app-layout>
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
     <div class="py-8">
         <div class="max-w-7xl text-4xl mx-auto sm:px-6 lg:px-8 flex justify-center items-center h-full">
             Sveiki, {{ Auth::user()->name }}!
@@ -188,4 +183,9 @@
             </div>
         </div>
     </div>
+    @if(session('success'))
+        <div class="flex justify-center items-center alert-success text-xl text-green-500 font-semibold italic">
+            {{ session('success') }}
+        </div>
+    @endif
 </x-app-layout>
