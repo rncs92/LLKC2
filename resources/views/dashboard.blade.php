@@ -184,7 +184,7 @@
         </div>
     </div>
     @if(session('success'))
-        <div class="flex justify-center items-center alert-success text-xl text-green-500 font-semibold italic">
+        <div class="flex justify-center items-center alert-success text-xl text-green-500 italic">
             {{ session('success') }}
         </div>
     @endif
