@@ -24,7 +24,8 @@ class Controller extends BaseController
     public function show(): View
     {
         $userId = Auth::user()->getAuthIdentifier();
-        $farms = Farm::all()->where('user_id', $userId);
+        $farms = Farm::where('user_id', $userId)->simplePaginate(10);
+
 
         return view('dashboard', compact('farms'));
     }
